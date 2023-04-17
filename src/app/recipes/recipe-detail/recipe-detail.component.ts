@@ -14,12 +14,13 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
-
+    // const id = this.route.snapshot.params['id'];
+    //subscribing the change that happens when params chaneged and executing the body where we read
+    // id and callgetrecipe method.
     this.route.params.subscribe(
       (params: Params) => { 
         this.id = +params['id']; 
-        this.recipe = this.recipeService.getRecipe(id);
+        this.recipe = this.recipeService.getRecipe(this.id);
       }
     )
   }
